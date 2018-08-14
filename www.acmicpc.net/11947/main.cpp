@@ -7,9 +7,9 @@ inline int GetLovely (int, int);
 int main(int argc, char** argv)
 {
     int T;
-    int n, digit;
-    int top, half;
-    int lovely, max;
+    unsigned int n, digit;
+    unsigned int top, half;
+    double lovely, max;
     
     std::cin >> T;
     while (T-- > 0)
