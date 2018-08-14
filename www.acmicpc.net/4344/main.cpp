@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     {
         int N;
         int sum, avr;
-        char points[1000] = { 0 };
+        int points[1000] = { 0 };
         double numOfOverAverage;
         
         sum = 0;
@@ -23,7 +23,7 @@ int main(int argc, char** argv)
         }
         
         avr = sum / N;
-        numOfOverAverage = count_if(points, points + N, [&avr](char e) -> bool {
+        numOfOverAverage = count_if(points, points + N, [&avr](int e) -> bool {
             return e > avr;
         });
         
