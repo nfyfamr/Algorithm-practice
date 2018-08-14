@@ -22,8 +22,7 @@ int main(int argc, char** argv)
         int a, b;
         scanf("%d %d", &a, &b);
         a = a % 10;
-        b = b % 4 - 1;
-        b = b==-1 ? 3 : b;
+        b = (b - 1) % 4;
         printf("%d\n", m[a][b]);
     }
     
