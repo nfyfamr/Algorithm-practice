@@ -6,20 +6,19 @@ using namespace std;
 int main(int argc, char** argv)
 {
     int T;
-    char bucket[1001] = { 0 };
+    int bucket[1001] = { 0 };
     
-    T = getc(stdin) - '0'; getc(stdin);
+    scanf("%d", &T);
     while (T-- > 0)
     {
         int n;
-        n = getc(stdin) - '0'; getc(stdin);
+        scanf_s("%d", &n);
         bucket[n] = n;
     }
-    for_each(std::begin(bucket), std::end(bucket), [](char c) -> void {
-        if (c != 0)
+    for_each(std::begin(bucket), std::end(bucket), [](int n) -> void {
+        if (n != 0)
         {
-            fputc(c + '0', stdout);
-            fputc('\n', stdout);
+            printf("%d\n", n);
         }
     });
     
