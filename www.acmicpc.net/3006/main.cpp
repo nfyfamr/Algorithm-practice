@@ -1,13 +1,9 @@
-#include <iostream>
+#include <cstdio>
 #include <vector>
 #include <iterator>
 
 int main (int argc, char** argv)
 {
-	std::ios_base::sync_with_stdio(false);
-	std::cin.tie(0);
-	std::cout.tie(0);
-
 	int N;
 	int j;
 	int count;
@@ -15,10 +11,10 @@ int main (int argc, char** argv)
 
 	v.reserve(100000);
 
-	std::cin >> N;
+	scanf("%d", &N);
 	for (int i=0; i<N; ++i) 
 	{
-		std::cin >> j;
+		scanf("%d", &j);
 		v.push_back(j);
 	}
 
@@ -45,7 +41,7 @@ int main (int argc, char** argv)
 			}
 			v.erase(it.base()-1);
 		}
-		std::cout << count << '\n';
+		printf("%d\n", count);
 	}
 
 	return 0;
