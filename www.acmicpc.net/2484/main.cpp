@@ -44,7 +44,7 @@ int GetReward (int *t)
             case 4: e = true; reward += 50000 + i*5000; break;
             case 3: e = true; reward += 10000 + i*1000; break;
             case 2: e = true; reward += 2000  + i*500; break;
-            case 1: if (!e)   reward  =         i*600; break;
+            case 1: if (!e)   reward  =         i*100; break;
         }
     }
     
