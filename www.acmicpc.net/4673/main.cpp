@@ -1,4 +1,4 @@
-a#include <cstdio>
+#include <cstdio>
 #include <array>
 
 using namespace std;
