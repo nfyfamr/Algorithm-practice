@@ -39,7 +39,7 @@ int main(int argc, char** argv)
         // x mod N = (b mod N * M mod N + y mod N) mod N
         for (b = 0; b < x[0]; ++b)
         {
-            if (x[1] == ((b * (y[0] % x[0]) + y[1] % x[0]) % x[0]))
+            if ((x[1] % x[0]) == ((b * (y[0] % x[0]) + y[1] % x[0]) % x[0]))
             {
                 break;
             }
