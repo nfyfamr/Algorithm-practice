@@ -43,6 +43,7 @@ int GetReward (int *t)
             case 4: reward += 50000 + i*5000; break;
             case 3: reward += 10000 + i*1000; break;
             case 2: reward += 2000  + i*500; break;
+            case 1: reward  =         i*600; break;
         }
     }
     
