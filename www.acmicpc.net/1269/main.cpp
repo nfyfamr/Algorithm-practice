@@ -1,7 +1,4 @@
 #include <iostream>
-#include <iterator>
-#include <algorithm>
-#include <array>
 
 using namespace std;
 
@@ -9,27 +6,23 @@ int main(int argc, char** argv)
 {
     
     int len_A, len_B;
-    int i;
-    array<int, 200000> A;
+    char* A = new char[100000000]();
     
     cin >> len_A >> len_B;
     
-    for (i = 0; i < len_A; ++i)
+    int i, val;
+    for (i = 0, val = 0; i < len_A; ++i)
     {
-        cin >> A[i];
+        cin >> val;
+        A[val] = true;
     }
     
-    auto begin = A.begin();
-    auto end = A.end();
     int comp;
     int num_intersection = 0;
     for (i = 0; i < len_B; ++i)
     {
         cin >> comp;
-        auto result = std::find(begin, end, comp);
-        
-        if (result != A.end())
-        {
+        if (A[comp] == true) {
             ++num_intersection;
         }
     }
