@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
     int N;
-    int p[90][2];
+    long long p[90][2];
     
     p[0][0] = 0;
     p[0][1] = 1;
@@ -14,7 +14,7 @@ int main() {
         p[i][0] = p[i - 1][0] + p[i - 1][1];
         p[i][1] = p[i - 1][0];
     }
-    printf("%d\n", p[N - 1][0] + p[N - 1][1]);
+    printf("%lld\n", p[N - 1][0] + p[N - 1][1]);
     
     return 0;
 }
