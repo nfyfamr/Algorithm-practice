@@ -1,41 +1,44 @@
 #include <iostream>
+#include <cmath>
 
-int GetFemale (int);
+int GetDigitOf (int);
+inline int GetLovely (int, int);
 
 int main(int argc, char** argv)
 {
     int T;
-    int n, last_n;
-    int max;
-    int lovely;
+    int n, digit;
+    int top, half;
+    int lovely, max;
     
     std::cin >> T;
     while (T-- > 0)
     {
         std::cin >> n;
+        digit = GetDigitOf(n);
         
-        int i = last_n > n ? 1 : last_n;
-        last_n = n;
-        for (; i<=n; ++i)
-        {
-            lovely = i * GetFemale(i);
-            max = max < lovely ? lovely : max;
-        }
+        top = std::pow(10, digit);
+        half = top / 2;
+        max = half > n ? GetLovely(n, top) : GetLovely(half, top);
+        
         std::cout << max << std::endl;
     }
     
     return 0;
 }
 
-int GetFemale (int n)
+int GetDigitOf (int n)
 {
-    int f = 0;
-    
-    for (int i=n; i!=0; i/=10)
+    int d = 1;
+    while (n/=10)
     {
-        f = f*10 + 9;
+        ++d;
     }
     
-    f = f - n;
-    return f;
+    return d;
+}
+
+inline int GetLovely (int n, int t)
+{
+    return n * (t - n - 1);
 }
