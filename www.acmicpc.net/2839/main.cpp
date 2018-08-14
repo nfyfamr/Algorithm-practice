@@ -3,43 +3,21 @@
 int main(int argc, char** argv)
 {
     int N;
-    int result;
+    int t, m;
+    int count;
     
     scanf("%d", &N);
-    switch (N % 10)
+    count = -1;
+    for (t = N / 5; t >= 0; --t)
     {
-        case 0:
-            result = N / 5;
+        m = N - 5 * t;
+        if (m % 3 == 0)
+        {
+            count = t + m / 3;
             break;
-        case 1:
-            result = N / 5 + 1;
-            break;
-        case 2:
-            result = N / 5 + 2;
-            break;
-        case 3:
-            result = N / 5 + 1;
-            break;
-        case 4:
-            result = N < 12 ? -1 : (N / 5 + 2);
-            break;
-        case 5:
-            result = N / 5;
-            break;
-        case 6:
-            result = N / 5 + 1;
-            break;
-        case 7:
-            result = N < 27 ? -1 : (N / 5 + 4);
-            break;
-        case 8:
-            result = N / 5 + 1;
-            break;
-        case 9:
-            result = N / 5 + 2;
-            break;
-    }
-    printf("%d\n", result);
+        }
+    };
+    printf("%d\n", count);
     
     return 0;
 }
