@@ -3,11 +3,11 @@
 int main(int argc, char** argv)
 {
     int N;
-    int teamA[3] = { 0 };    // [point, winningMinuate, winningSecond]
-    int teamB[3] = { 0 };
-    unsigned char lastMin, lastSec;
+    int teamA[2] = { 0 };
+    int teamB[2] = { 0 };
+    int lastSec;
     
-    lastMin = lastSec = 0;
+    lastSec = 0;
     scanf("%d", &N);
     while (N-- >= 0)
     {
@@ -23,43 +23,21 @@ int main(int argc, char** argv)
             sec = 0;
         }
         
+        sec = min * 60 + sec;
         if (teamA[0] > teamB[0])
         {
-            teamA[1] += min - lastMin;
-            teamA[2] += sec - lastSec;
+            teamA[1] += sec - lastSec;
         }
         else if (teamA[0] < teamB[0])
         {
-            teamB[1] += min - lastMin;
-            teamB[2] += sec - lastSec;
+            teamB[1] += sec - lastSec;
         }
-        lastMin = min;
         lastSec = sec;
         (goal == 1) ? ++teamA[0] : ++teamB[0];
     }
-    if (teamA[2] < 0)
-    {
-        --teamA[1];
-        teamA[2] += 60;
-    }
-    else if (teamA[2] > 59)
-    {
-        ++teamA[1];
-        teamA[2] -= 60;
-    }
-    if (teamB[2] < 0)
-    {
-        --teamB[1];
-        teamB[2] += 60;
-    }
-    else if (teamB[2] > 59)
-    {
-        ++teamB[1];
-        teamB[2] -= 60;
-    }
     
-    printf("%02d:%02d\n", teamA[1], teamA[2]);
-    printf("%02d:%02d\n", teamB[1], teamB[2]);
+    printf("%02d:%02d\n", teamA[1]/60, teamA[1]%60);
+    printf("%02d:%02d\n", teamB[1]/60, teamB[1]%60);
     
     return 0;
 }
