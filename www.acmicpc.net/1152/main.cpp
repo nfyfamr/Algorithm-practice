@@ -1,23 +1,31 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
 int main(int argc, char** argv)
 {
     int count;
+    bool ctx;
     string str;
     
-    count = 0;
+    ctx = true;
     std::getline(cin, str);
     
-    for (auto it = str.begin(); it+1 != str.end(); ++it)
-    {
-        if (*it == ' ' && *(it + 1) != ' ')
+    count = std::count_if(str.begin(), str.end(), [&ctx](char c) -> bool {
+        if (c == ' ')
         {
-            count++;
+            ctx = true;
         }
-    }
+        else if (ctx)
+        {
+            ctx = false;
+            return true;
+        }
+        
+        return false;
+    });
     cout << count << endl;
     
     return 0;
