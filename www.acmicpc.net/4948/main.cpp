@@ -6,11 +6,12 @@ using namespace std;
 int main(int argc, char** argv)
 {
     bitset<123456 * 2 + 1> prime;
-    unsigned _int32 sumPrime[123456 * 2 + 1] = { 0 };
+    int *sumPrime = new int[123456 * 2 + 1];
     int N;
     
     prime.set();
     prime[1] = false;
+    sumPrime[1] = 0;
     for (int i = 2; i <= 123456 * 2; ++i)
     {
         sumPrime[i] = sumPrime[i - 1];
@@ -34,5 +35,6 @@ int main(int argc, char** argv)
         printf("%d\n", sumPrime[2 * N] - sumPrime[N]);
     }
     
+    delete[] sumPrime;
     return 0;
 }
