@@ -25,7 +25,7 @@ int main(int argc, char** argv)
         else if (s_input[i] == "grey")        i_input[i] = 8;
         else if (s_input[i] == "white")        i_input[i] = 9;
     }
-    cout << long long((i_input[0] * 10 + i_input[1]) * pow(10, i_input[2])) << endl;
+    cout << (long long)((i_input[0] * 10 + i_input[1]) * pow(10, i_input[2])) << endl;
     
     return 0;
 }
