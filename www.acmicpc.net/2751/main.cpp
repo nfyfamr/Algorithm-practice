@@ -1,22 +1,27 @@
-#include <cstdio>
+#include <iostream>
+#include <bitset>
 
-int main(int argc, char** argv)
+int main (int argc, char** argv)
 {
-    int N;
-    int t;
-    bool bucket[1000001] = { 0 };
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+    std::cout.tie(0);
     
-    scanf("%d", &N);
-    while (N-- > 0)
+    std::bitset<2000001> bs;
+    int N, j;
+    
+    std::cin >> N;
+    for (int i=0; i<N; ++i)
     {
-        scanf("%d", &t);
-        bucket[t] = true;
+        std::cin >> j;
+        bs.set(j + 1000000);
     }
-    for (int i = 1; i < 1000001; ++i)
+    
+    for (int i=0; i<bs.size(); ++i)
     {
-        if (bucket[i])
+        if (bs.test(i))
         {
-            printf("%d\n", i);
+            std::cout << i - 1000000 << std::endl;
         }
     }
     
