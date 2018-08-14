@@ -31,7 +31,6 @@ int main(int argc, char** argv)
         if (result != A.end())
         {
             ++num_intersection;
-            begin = result;
         }
     }
     
