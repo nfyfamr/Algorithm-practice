@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stack>
 #include <string>
 
 using namespace std;
@@ -11,28 +10,19 @@ int main(int argc, char** argv)
     cin >> T;
     while (T-- > 0)
     {
-        stack<bool> st;
+        int t = 0;
         string str;
+        
         cin >> str;
         for (auto it = str.begin(); it != str.end(); ++it)
         {
             if (*it == '(')
-            {
-                st.push(true);
-            }
+                ++t;
             else
-            {
-                if (st.empty())
-                {
-                    st.push(true);
-                    break;
-                }
-                
-                st.pop();
-            }
+                --t;
         }
         
-        cout << (st.empty() ? "YES" : "NO") << endl;
+        cout << (t == 0 ? "YES" : "NO") << endl;
     }
     
     return 0;
