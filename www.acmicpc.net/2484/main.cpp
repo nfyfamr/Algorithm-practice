@@ -41,9 +41,17 @@ int GetReward (int *t)
     {
         switch (dice[i])
         {
-            case 4: reward += 50000 + i*5000; break;
-            case 3: reward += 10000 + i*1000; break;
-            case 2: reward += 2000  + i*500; break;
+            case 4: reward = 50000 + i*5000; break;
+            case 3: reward = 10000 + i*1000; break;
+            case 2:
+                if (reward == 0)
+                {
+                    reward = 1000 + i*100; break;
+                }
+                else
+                {
+                    reward = 2000 + (reward-1000)*5 + i*500;
+                }
             case 1: e = i;
         }
     }
