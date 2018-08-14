@@ -18,7 +18,7 @@ int main (int argc, char** argv)
     {
         out[i] = s[ i % len_s ];
     }
-    out[i+1] = '\n';
+    out[i+1] = '\0';
     
     printf("%s", out);
 }
