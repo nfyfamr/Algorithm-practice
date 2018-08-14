@@ -22,7 +22,11 @@ int main(int argc, char** argv)
 
 inline int GetPrizeA (int g)
 {
-    if (g <= 1)
+    if (g == 0)
+    {
+        return 0;
+    }
+    else if (g <= 1)
     {
         return 500;
     }
@@ -54,7 +58,11 @@ inline int GetPrizeA (int g)
 
 inline int GetPrizeB (int g)
 {
-    if (g <= 1)
+    if (g == 0)
+    {
+        return 0;
+    }
+    else if (g <= 1)
     {
         return 512;
     }
