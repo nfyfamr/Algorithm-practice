@@ -1,6 +1,5 @@
-#include <iostream>
+#include <cstdio>
 #include <algorithm>
-#include <sstream>
 
 using namespace std;
 
@@ -8,22 +7,21 @@ int main(int argc, char** argv)
 {
     int T;
     char bucket[1001] = { 0 };
-    ostringstream os;
     
-    cin >> T;
+    T = getc(stdin) - '0'; getc(stdin);
     while (T-- > 0)
     {
         int n;
-        cin >> n;
-        bucket[n] = (char)n;
+        n = getc(stdin) - '0'; getc(stdin);
+        bucket[n] = n;
     }
-    for_each(std::begin(bucket), std::end(bucket), [&os](char c) -> void {
+    for_each(std::begin(bucket), std::end(bucket), [](char c) -> void {
         if (c != 0)
         {
-            os << (int)c << '\n';
+            fputc(c + '0', stdout);
+            fputc('\n', stdout);
         }
     });
-    cout << os.str();
     
     
     return 0;
