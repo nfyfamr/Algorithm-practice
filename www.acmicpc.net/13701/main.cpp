@@ -6,7 +6,7 @@ int main(int argc, char** argv)
     std::bitset<33554432> bs;
     int i;
     
-    while (std::cin >> i)
+    while (~scanf("%d",&i))
     {
         if (!bs.test(i))
         {
