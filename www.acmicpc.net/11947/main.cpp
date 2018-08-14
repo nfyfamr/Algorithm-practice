@@ -5,7 +5,7 @@ int GetFemale (int);
 int main(int argc, char** argv)
 {
     int T;
-    int n;
+    int n, last_n;
     int max;
     int lovely;
     
@@ -14,7 +14,9 @@ int main(int argc, char** argv)
     {
         std::cin >> n;
         
-        for (int i=1; i<=n; ++i)
+        int i = last_n > n ? 1 : last_n;
+        last_n = n;
+        for (; i<=n; ++i)
         {
             lovely = i * GetFemale(i);
             max = max < lovely ? lovely : max;
