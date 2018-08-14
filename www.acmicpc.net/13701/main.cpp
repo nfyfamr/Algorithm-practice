@@ -3,10 +3,13 @@
 
 int main(int argc, char** argv)
 {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
     std::bitset<33554432> bs;
     int i;
     
-    while (std::cin >> i && std::cin.eof())
+    while (std::cin >> i)
     {
         if (!bs.test(i))
         {
