@@ -18,7 +18,6 @@ int main (int argc, char** argv)
         std::cin >> t[0] >> t[1] >> t[2] >> t[3];
         
         r = GetReward(t);
-        std::cout << r << std::endl;
         max = max < r ? r : max;
     }
     
