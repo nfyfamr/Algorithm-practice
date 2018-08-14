@@ -12,7 +12,7 @@ int main(int argc, char** argv)
     while (T-- > 0)
     {
         int n;
-        scanf_s("%d", &n);
+        scanf("%d", &n);
         bucket[n] = n;
     }
     for_each(std::begin(bucket), std::end(bucket), [](int n) -> void {
@@ -21,7 +21,6 @@ int main(int argc, char** argv)
             printf("%d\n", n);
         }
     });
-    
     
     return 0;
 }
