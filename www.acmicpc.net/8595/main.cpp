@@ -15,7 +15,7 @@ int main (int argc, char** argv)
     uint32_t hidden = 0;
     
     std::cin >> n >> str;
-    for (int i=0; i<n; ++i)
+    for (int i=0; i<n+1; ++i)
     {
         c = str[i];
         
