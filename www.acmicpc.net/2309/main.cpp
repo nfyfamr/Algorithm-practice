@@ -30,9 +30,8 @@ int main(int argc, char** argv)
     
     for (int i = 0; i < 7; ++i)
     {
-        printf("%d ", dwarfs[i]);
+        printf("%d\n", dwarfs[i]);
     }
-    printf("\n");
     
     return 0;
 }
