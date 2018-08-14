@@ -1,22 +1,24 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
+
+using namespace std;
 
 int main(int argc, char** argv)
 {
     int count;
-    std::string str;
+    string str;
     
-    std::getline(std::cin, str);
+    count = 0;
+    std::getline(cin, str);
     
-    std::string::iterator itBegin = str.begin();
-    std::string::iterator itEnd = str.end()-1;
-    
-    for (; *itBegin == ' '; ++itBegin);
-    for (; *itEnd == ' '; --itEnd);
-    
-    count = std::count(itBegin, itEnd, ' ');
-    std::cout << count+1 << std::endl;
+    for (auto it = str.begin(); it+1 != str.end(); ++it)
+    {
+        if (*it == ' ' && *(it + 1) != ' ')
+        {
+            count++;
+        }
+    }
+    cout << count << endl;
     
     return 0;
 }
