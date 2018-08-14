@@ -1,13 +1,15 @@
 #include <cstdio>
 #include <algorithm>
+#include <array>
 
 using namespace std;
 
 int main(int argc, char** argv)
 {
     int T;
-    int bucket[1001] = { 0 };
+    array<int, 1001> bucket;
     
+    bucket.fill(-1);
     scanf("%d", &T);
     while (T-- > 0)
     {
@@ -16,7 +18,7 @@ int main(int argc, char** argv)
         bucket[n] = n;
     }
     for_each(std::begin(bucket), std::end(bucket), [](int n) -> void {
-        if (n != 0)
+        if (n != -1)
         {
             printf("%d\n", n);
         }
