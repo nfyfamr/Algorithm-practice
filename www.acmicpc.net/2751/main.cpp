@@ -1,27 +1,24 @@
-#include <iostream>
+#include <cstdio>
 #include <bitset>
+
+char b[2000001] = {0, };
 
 int main (int argc, char** argv)
 {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(0);
-    std::cout.tie(0);
-    
-    std::bitset<2000001> bs;
     int N, j;
     
-    std::cin >> N;
+    scanf("%d", &N);
     for (int i=0; i<N; ++i)
     {
-        std::cin >> j;
-        bs.set(j + 1000000);
+        scanf("%d", &j);
+        b[j + 1000000] = 1;
     }
     
-    for (int i=0; i<bs.size(); ++i)
+    for (int i=0; i<2000001; ++i)
     {
-        if (bs.test(i))
+        if (b[i])
         {
-            std::cout << i - 1000000 << std::endl;
+            printf("%d\n", i-1000000);
         }
     }
     
