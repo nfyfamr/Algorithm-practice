@@ -14,7 +14,7 @@ int main(int argc, char** argv)
         string str;
         
         cin >> str;
-        for (auto it = str.begin(); it != str.end(); ++it)
+        for (auto it = str.begin(); (it != str.end()) && (t >= 0) ; ++it)
         {
             if (*it == '(')
                 ++t;
