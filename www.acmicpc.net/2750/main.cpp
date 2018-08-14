@@ -1,33 +1,27 @@
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <cstdio>
+#include <iostream>
 #include <algorithm>
-#include <vector>
 
-using namespace std;
-
-int main(int argc, char** argv)
+int main (int argc, char** argv)
 {
-    int T;
-    vector<int> arr;
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(0);
+    std::cout.tie(0);
     
-    scanf("%d", &T);
-    while (T-- > 0)
+    int N;
+    int arr[1000];
+    
+    std::cin >> N;
+    for (int i=0; i<N; ++i)
     {
-        int n;
-        scanf("%d", &n);
-        arr.push_back(n);
+        std::cin >> arr[i];
     }
-    for (auto it = arr.begin(); it != arr.end()-1; ++it)
+    
+    std::sort(arr, arr+N);
+    
+    for (int i=0; i<N; ++i)
     {
-        auto min = min_element(it+1, arr.end());
-        if (*it > *min)
-        {
-            swap(*it, *min);
-        }
-        printf("%d\n", *it);
+        std::cout << arr[i] << '\n';
     }
-    printf("%d\n", arr.back());
     
     return 0;
 }
