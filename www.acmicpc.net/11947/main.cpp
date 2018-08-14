@@ -1,15 +1,16 @@
 #include <iostream>
 #include <cmath>
+#include <cstdint>
 
-int GetDigitOf (int);
-inline double GetLovely (int, int);
+int64_t GetDigitOf (int64_t);
+inline int64_t GetLovely (int64_t, int64_t);
 
 int main(int argc, char** argv)
 {
     int T;
-    unsigned int n, digit;
-    unsigned int top, half;
-    double lovely, max;
+    int64_t n, digit;
+    int64_t top, half;
+    int64_t lovely, max;
     
     std::cin >> T;
     while (T-- > 0)
@@ -27,9 +28,9 @@ int main(int argc, char** argv)
     return 0;
 }
 
-int GetDigitOf (int n)
+int64_t GetDigitOf (int64_t n)
 {
-    int d = 1;
+    int64_t d = 1;
     while (n/=10)
     {
         ++d;
@@ -38,7 +39,7 @@ int GetDigitOf (int n)
     return d;
 }
 
-inline double GetLovely (int n, int t)
+inline int64_t GetLovely (int64_t n, int64_t t)
 {
     return n * (t - n - 1);
 }
