@@ -1,28 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <cstdio>
 #include <algorithm>
-#include <array>
+#include <vector>
 
 using namespace std;
 
 int main(int argc, char** argv)
 {
     int T;
-    array<int, 1001> bucket;
+    vector<int> arr;
     
-    bucket.fill(-1);
     scanf("%d", &T);
     while (T-- > 0)
     {
         int n;
         scanf("%d", &n);
-        bucket[n] = n;
+        arr.push_back(n);
     }
-    for_each(std::begin(bucket), std::end(bucket), [](int n) -> void {
-        if (n != -1)
+    for (auto it = arr.begin(); it != arr.end()-1; ++it)
+    {
+        auto min = min_element(it+1, arr.end());
+        if (*it > *min)
         {
-            printf("%d\n", n);
+            swap(*it, *min);
         }
-    });
+        printf("%d\n", *it);
+    }
+    printf("%d\n", arr.back());
     
     return 0;
 }
