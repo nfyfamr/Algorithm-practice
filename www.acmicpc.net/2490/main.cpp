@@ -9,7 +9,7 @@ int main(int argc, char** argv)
         
         scanf("%d %d %d %d", &a, &b, &c, &d);
         sum = a + b + c + d;
-        printf("%c", (sum == 0) ? 'E' : 'D' - sum);
+        printf("%c", (sum == 4) ? 'E' : 'D' - sum);
     }
     
     return 0;
