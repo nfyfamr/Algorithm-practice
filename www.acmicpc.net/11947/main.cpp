@@ -2,7 +2,7 @@
 #include <cmath>
 
 int GetDigitOf (int);
-inline int GetLovely (int, int);
+inline double GetLovely (int, int);
 
 int main(int argc, char** argv)
 {
@@ -38,7 +38,7 @@ int GetDigitOf (int n)
     return d;
 }
 
-inline int GetLovely (int n, int t)
+inline double GetLovely (int n, int t)
 {
     return n * (t - n - 1);
 }
