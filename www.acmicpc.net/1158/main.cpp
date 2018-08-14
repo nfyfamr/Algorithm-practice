@@ -14,33 +14,19 @@ int main (int argc, char** argv)
     }
     
     std::cout << "<";
-    auto it = v.begin();
-    while (n-- > 0)
+    auto b = v.begin();
+    int i = 0;
+    while (v.size() > 1)
     {
-        int j = m;
-        while (--j > 0)
-        {
-            ++it;
-            if (it == v.end())
-            {
-                it = v.begin();
-            }
-        }
-        std::cout << *it;
-        if (n == 0)
-        {
-            std::cout << ">";
-        }
-        else
-        {
-            std::cout << ", ";
-        }
-        v.erase(it);
-        if (it == v.end())
-        {
-            it = v.begin();
-        }
+        i += m-1;
+        i %= v.size();
+        std::cout << v[i] << ", ";
+        v.erase(b + i);
     }
+    
+    i += m-1;
+    i %= v.size();
+    std::cout << v[i] << ">" << std::endl;
     
     return 0;
 }
