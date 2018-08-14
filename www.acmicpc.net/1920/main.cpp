@@ -1,15 +1,17 @@
 #include <cstdio>
+#include <array>
+#include <algorithm>
 
-bool bucket[100001];
-int main() {
+using namespace std;
+
+int main(int argc, char** argv) {
     int N, M;
+    array<int, 100001> bucket;
     
     scanf("%d", &N);
     for (int i = 0; i < N; ++i)
     {
-        int t;
-        scanf("%d", &t);
-        bucket[t] = true;
+        scanf("%d", &bucket[i]);
     }
     
     scanf("%d", &M);
@@ -17,7 +19,14 @@ int main() {
     {
         int t;
         scanf("%d", &t);
-        printf("%d\n", bucket[t]);
+        if (find(bucket.begin(), bucket.begin() + N, t) != bucket.begin() + N)
+        {
+            printf("1\n");
+        }
+        else
+        {
+            printf("0\n");
+        }
     }
     
     return 0;
