@@ -1,5 +1,6 @@
 #include <iostream>
 #include <bitset>
+#include <ios>
 
 int main(int argc, char** argv)
 {
