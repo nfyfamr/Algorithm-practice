@@ -7,7 +7,7 @@ int main(int argc, char** argv)
 {
     string str;
     
-    while (cin >> str)
+    while (getline(cin, str))
     {
         cout << str << endl;
     }
