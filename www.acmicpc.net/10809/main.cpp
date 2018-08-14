@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include <array>
+#include <iterator>
 
 using namespace std;
 
