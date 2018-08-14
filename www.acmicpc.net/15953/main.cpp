@@ -46,7 +46,7 @@ inline int GetPrizeA (int g)
     {
         return 30;
     }
-    else if (g < 21)
+    else if (g <= 21)
     {
         return 10;
     }
