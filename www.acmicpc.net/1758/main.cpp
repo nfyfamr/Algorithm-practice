@@ -4,7 +4,11 @@
 using namespace std;
 
 int main() {
-    int N, tips[100000], total = 0;
+    int N, tips[100000];
+    // Max N -> 100,000
+    // Maximum tip per person -> 100,000
+    // Possible total overflows intager! -> 100,000 * 100,000
+    long long total = 0;
 
     cin >> N;
     for (int i=0; i<N; ++i) {
