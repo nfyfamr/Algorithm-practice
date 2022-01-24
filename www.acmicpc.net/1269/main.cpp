@@ -1,33 +1,24 @@
 #include <iostream>
-
-using namespace std;
+#include <set>
 
 int main(int argc, char** argv)
 {
-    
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+
     int len_A, len_B;
-    char* A = new char[100000000]();
-    
-    cin >> len_A >> len_B;
-    
-    int i, val;
-    for (i = 0, val = 0; i < len_A; ++i)
+    std::set<int> setA;
+
+    std::cin >> len_A >> len_B;
+
+    int i, val = 0;
+    for (i = 0; i < len_A + len_B; ++i)
     {
-        cin >> val;
-        A[val] = true;
+        std::cin >> val;
+        setA.insert(val);
     }
-    
-    int comp;
-    int num_intersection = 0;
-    for (i = 0; i < len_B; ++i)
-    {
-        cin >> comp;
-        if (A[comp] == true) {
-            ++num_intersection;
-        }
-    }
-    
-    cout << len_A + len_B - num_intersection * 2;
-    
+
+    std::cout << 2*setA.size() - len_A - len_B;
+
     return 0;
 }
