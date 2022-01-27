@@ -25,11 +25,11 @@ int main(int argc, char** argv)
 
             if (pq.empty())
             {
-                cout << 0 << endl;
+                cout << 0 << '\n';
             }
             else
             {
-                cout << pq.top() * -1 << endl;
+                cout << pq.top() * -1 << '\n';
                 pq.pop();
             }
 
