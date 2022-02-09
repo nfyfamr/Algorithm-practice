@@ -2,8 +2,9 @@
 #include <vector>
 
 using namespace std;
+using ull_t = unsigned long long int;
 
-int search(vector<int>& v, int cut);
+bool test(vector<int>&, int, int);
 
 int main(int argc, char** argv)
 {
@@ -16,38 +17,43 @@ int main(int argc, char** argv)
 
     cin >> N >> M;
 
-    int h;
     int tallest = -1;
     for (int i = 0; i < N; ++i)
     {
+        int h;
         cin >> h;
         trees.push_back(h);
         tallest = (tallest > h ? tallest : h);
     }
 
-    int last_cut_height = 0;
-    int cut_height = tallest / 2;
-    int cut_sum = 0;
-    while ((cut_sum = search(trees, cut_height)) != M)
+    int low = 0;
+    int high = tallest;
+    while (high - low > 1)
     {
-        int delta = abs(cut_height - last_cut_height) / 2;
-        last_cut_height = cut_height;
-        cut_height += (cut_sum > M ? delta : -delta);
+        int m = (low + high) / 2;
+        if (test(trees, m, M))
+        {
+            low = m;
+        }
+        else
+        {
+            high = m;
+        }
     }
 
-    cout << cut_height << '\n';
+    cout << low << '\n';
 
     return 0;
 }
 
 
-int search(vector<int>& trees, int cut_height)
+bool test(vector<int>& trees, int cut_height, int target)
 {
-    int cut_sum = 0;
+    ull_t cut_sum = 0;
     for (auto tree_height : trees)
     {
         cut_sum += (tree_height > cut_height ? tree_height - cut_height : 0);
     }
 
-    return cut_sum;
+    return cut_sum >= target;
 }
