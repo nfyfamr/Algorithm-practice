@@ -20,7 +20,7 @@ int main()
         if (bucket[i] == 0) continue;
         for (int j = 0; j < bucket[i]; ++j)
         {
-            cout << i << endl;
+            cout << i << '\n';
         }
     }
 }
