@@ -10,7 +10,7 @@ int main()
     string s;
     cin >> L >> s;
 
-    uint32_t r[5] = {1}, M = 1'234'567'891;
+    uint64_t r[L] = {1}, M = 1'234'567'891;
     for (int i = 1; i < L; ++i) r[i] = (31 * r[i - 1]) % M;
 
     uint64_t hash = 0;
