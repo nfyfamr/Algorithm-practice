@@ -1,6 +1,7 @@
 #include<iostream>
-#include<vector>
 #include<numeric>
+#include<list>
+#include<queue>
 using namespace std;
 
 int main()
@@ -11,21 +12,16 @@ int main()
     int n;
     cin >> n;
 
-    vector<int> cards(n);
-    iota(cards.begin(), cards.end(), 1);
+    list<int> _cards(n);
+    iota(_cards.begin(), _cards.end(), 1);
+    queue<int, list<int>> cards(_cards);
 
-    auto current = cards.begin();
-    int last = *current;
-    current = cards.erase(current);
-
-    while (!cards.empty())
+    while (cards.size() > 1)
     {
-        if (current + 1 == cards.end()) current = cards.begin();
-        else current += 1;
-
-    	last = *current;
-        current = cards.erase(current);
-        if (current == cards.end()) current = cards.begin();
+        cards.pop();
+        int c = cards.front();
+        cards.pop();
+        cards.push(c);
     }
-    cout << last;
+    cout << cards.front();
 }
