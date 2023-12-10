@@ -1,33 +1,26 @@
-#include <cstdio>
-#include <array>
-#include <algorithm>
-
+#include<iostream>
+#include<unordered_set>
 using namespace std;
 
-int main(int argc, char** argv) {
-    int N, M;
-    array<int, 100001> bucket;
-    
-    scanf("%d", &N);
-    for (int i = 0; i < N; ++i)
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+    unordered_set<int> set;
+    for (int i = 0, t; i < n; ++i)
     {
-        scanf("%d", &bucket[i]);
+        cin >> t;
+        set.insert(t);
     }
-    
-    scanf("%d", &M);
-    while (M-- > 0)
+
+    int m;
+    cin >> m;
+    for (int i = 0, t; i < m; ++i)
     {
-        int t;
-        scanf("%d", &t);
-        if (find(bucket.begin(), bucket.begin() + N, t) != bucket.begin() + N)
-        {
-            printf("1\n");
-        }
-        else
-        {
-            printf("0\n");
-        }
+        cin >> t;
+        cout << set.count(t) << '\n';
     }
-    
-    return 0;
 }
