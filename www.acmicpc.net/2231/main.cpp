@@ -22,7 +22,7 @@ int main()
     int t = n;
     while (t / 10 > 0){
         ++power;
-        t = t % 10;
+        t = t / 10;
     }
 
 	int i = n > 19 ? n - 10*power : 1;
