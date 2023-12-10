@@ -25,7 +25,8 @@ int main()
         t = t % 10;
     }
 
-    for (int i = (n > 19 ? n - 10*power : 1); i < n; ++i)
+	int i = n > 19 ? n - 10*power : 1;
+    for (; i < n; ++i)
     {
         if (num_gen(i) == n)
         {
@@ -33,4 +34,5 @@ int main()
             break;
         }
     }
+    if (i == n) cout << 0;
 }
