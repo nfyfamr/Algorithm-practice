@@ -1,12 +1,8 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
+#include<utility>
 using namespace std;
-
-struct Tuple
-{
-    int index, x, y, rank;
-};
 
 int main()
 {
@@ -15,29 +11,19 @@ int main()
 
     int n;
     cin >> n;
-    vector<Tuple> students(n);
+    vector<pair<int, int>> students;
+    students.reserve(n);
     for (int i = 0, x, y; i < n; ++i)
     {
         cin >> x >> y;
-        students[i] = Tuple({i, x, y, 0});
+        students.push_back({x, y});
     }
 
-    auto compare = [](const auto &a, const auto &b) {
-        if (a.x > b.x && a.y > b.y) return true;
-        else return false;
-    };
-    sort(students.begin(), students.end(), compare);
-
-    for (int i = 1; i < n; ++i)
+    for (auto &s : students)
     {
-        if (compare(students[i-1], students[i]))
-            students[i].rank = i;
-        else
-            students[i].rank = students[i-1].rank;
+        int rank = count_if(students.begin(), students.end(), [&s](const auto &el) {
+            return s.first < el.first && s.second < el.second;
+        });
+        cout << rank + 1 << " ";
     }
-    sort(students.begin(), students.end(), [](const auto &a, const auto &b) {
-        return a.index < b.index;
-    });
-
-    for (auto &s : students) cout << s.rank + 1 << " ";
 }
