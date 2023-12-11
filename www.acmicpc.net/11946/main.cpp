@@ -5,6 +5,11 @@
 #include<utility>
 using namespace std;
 
+struct Triplet
+{
+    int first, second, third; // (t_id, q_cnt, time)
+};
+
 int main()
 {
     ios::sync_with_stdio(false);
@@ -19,26 +24,25 @@ int main()
     for (int i = 0; i < q; ++i)
     {
         cin >> time >> t_id >> q_id >> rst;
+        auto &info = teams[t_id-1][q_id-1];
         if (rst == "AC")
         {
-            auto info = teams[t_id-1][q_id-1];
             if (!info.first)
             {
-                teams[t_id-1][q_id-1].first = true;
-                teams[t_id-1][q_id-1].second += time;
+                info.first = true;
+                info.second += time;
             }
         }
         else
         {
-            auto info = teams[t_id-1][q_id-1];
             if (!info.first)
             {
-                teams[t_id-1][q_id-1].second += 20;
+                info.second += 20;
             }
         }
     }
 
-    vector<pair<int, int>> dashboard(n);
+    vector<Triplet> dashboard;
     for (int i = 0; i < n; ++i)
     {
         int cnt = 0, time = 0;
@@ -50,13 +54,14 @@ int main()
                 time += p.second;
             }
         }
-        dashboard[i] = make_pair(cnt, time);
+        dashboard.push_back({i + 1, cnt, time});
     }
 
-    stable_sort(dashboard.begin(), dashboard.end(), [](const auto &a, const auto &b) {
-        if (a.first != b.first) return a.first > b.first;
-        else return a.second < b.second;
+    sort(dashboard.begin(), dashboard.end(), [](const auto &a, const auto &b) {
+        if (a.second != b.second) return a.second > b.second;
+        else if (a.third != b.third) return a.third < b.third;
+        else return a.first < b.first;
     });
 
-    for (int i = 0; i < n; ++i) cout << i + 1 << ' ' << dashboard[i].first << ' ' << dashboard[i].second << '\n';
+    for (auto &p : dashboard) cout << p.first << ' ' << p.second << ' ' << p.third << '\n';
 }
