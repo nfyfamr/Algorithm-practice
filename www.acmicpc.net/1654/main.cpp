@@ -20,7 +20,7 @@ int main()
     vector<int> cables(n);
     for (int i = 0; i < k; ++i) cin >> cables[i];
 
-    int low = 1, mid, high = *max_element(cables.begin(), cables.end());
+    unsigned int low = 1, mid, high = *max_element(cables.begin(), cables.end());
     int cutted;
     while (low <= high)
     {
@@ -29,5 +29,5 @@ int main()
         if (cutted >= n) low = mid + 1;
         else high = mid - 1;
     }
-    cout << high;
+    cout << low - 1;
 }
