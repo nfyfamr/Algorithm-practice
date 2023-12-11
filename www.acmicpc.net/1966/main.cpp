@@ -1,7 +1,6 @@
 #include<iostream>
-#include<vector>
-#include<algorithm>
-#include<numeric>
+#include<queue>
+#include<utility>
 using namespace std;
 
 int main()
@@ -14,33 +13,33 @@ int main()
     while (t-- > 0)
     {
         cin >> n >> query;
-        vector<int> q(n);
-        vector<int> freq(11, 0);
+        queue<pair<int, int>> q;
+        priority_queue<int> pq;
+        int queried_prio;
         for (int i = 0, prio; i < n; ++i)
         {
             cin >> prio;
-            q[i] = prio;
-            freq[prio] += 1;
+            q.push({i, prio});
+            pq.push(prio);
+            if (query == i) queried_prio = prio;
         }
 
-        auto iter = freq.begin() + q[query] + 1;
-        for (; iter != freq.end() && *iter == 0; ++iter);
-        int prev_prio = (iter != freq.end() ? iter - freq.begin() : 0);
-
-        auto prev_prio_it = find_if(q.rbegin(), q.rend(), [prev_prio](const auto &el) {
-            return el == prev_prio; // if prev_prio == 0, iter is set as q.rend()
-        });
-        auto prev_prio_it_fw = (prev_prio_it.base() != q.end() ? prev_prio_it.base() : q.begin());
-
-        int order = accumulate(freq.begin() + q[query] + 1, freq.end(), decltype(freq)::value_type(0));
-        if (prev_prio_it_fw - q.begin() > query)
+        int cnt = 0;
+        while (true)
         {
-            order += freq[q[query]] - count(q.begin() + query + 1, prev_prio_it_fw, q[query]) - 1;
+            if (q.front().second == pq.top())
+            {
+                ++cnt;
+                if (q.front().first == query) break;
+                q.pop();
+                pq.pop();
+            }
+            else
+            {
+                q.push(q.front());
+                q.pop();
+            }
         }
-        else
-        {
-            order += count(prev_prio_it_fw, q.begin() + query, q[query]);
-        }
-        cout << order + 1 << '\n';
+        cout << cnt << '\n';
     }
 }
