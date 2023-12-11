@@ -30,15 +30,16 @@ int main()
         auto prev_prio_it = find_if(q.rbegin(), q.rend(), [prev_prio](const auto &el) {
             return el == prev_prio; // if prev_prio == 0, iter is set as q.rend()
         });
+        auto prev_prio_it_fw = (prev_prio_it.base() != q.end() ? prev_prio_it.base() : q.begin());
 
         int order = accumulate(freq.begin() + q[query] + 1, freq.end(), decltype(freq)::value_type(0));
-        if (prev_prio_it.base() - q.begin() > query)
+        if (prev_prio_it_fw - q.begin() > query)
         {
-            order += count(prev_prio_it.base(), q.end(), q[query]);
+            order += count(prev_prio_it_fw, q.end(), q[query]);
         }
         else
         {
-            order += count(prev_prio_it.base(), q.begin() + query, q[query]);
+            order += count(prev_prio_it_fw, q.begin() + query, q[query]);
         }
         cout << order + 1 << '\n';
     }
