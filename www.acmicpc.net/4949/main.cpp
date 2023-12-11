@@ -48,6 +48,7 @@ int main()
                 }
             }
         }
+        if (!stack.empty()) bal = false;
         cout << (bal ? "yes" : "no") << '\n';
     }
 }
