@@ -35,7 +35,7 @@ int main()
         int order = accumulate(freq.begin() + q[query] + 1, freq.end(), decltype(freq)::value_type(0));
         if (prev_prio_it_fw - q.begin() > query)
         {
-            order += count(prev_prio_it_fw, q.end(), q[query]);
+            order += freq[q[query]] - count(q.begin() + query + 1, prev_prio_it_fw, q[query]) - 1;
         }
         else
         {
