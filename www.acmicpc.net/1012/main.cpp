@@ -1,6 +1,39 @@
 #include<iostream>
 #include<vector>
+#include<utility>
 using namespace std;
+
+void find_group(int x, int y, vector<vector<bool>> &farm)
+{
+    vector<pair<int, int>> path;
+    path.push_back({x, y});
+    while (!path.empty())
+    {
+        auto p = path.back();
+        path.pop_back();
+
+        if (p.first > 0 && farm[p.first - 1][p.second])
+        {
+            path.push_back({p.first - 1, p.second});
+            farm[p.first - 1][p.second] = false;
+        }
+        if (p.second > 0 && farm[p.first][p.second - 1])
+        {
+            path.push_back({p.first, p.second - 1});
+            farm[p.first][p.second - 1] = false;
+        }
+        if (p.first < farm.size() - 1 && farm[p.first + 1][p.second])
+        {
+            path.push_back({p.first + 1, p.second});
+            farm[p.first + 1][p.second] = false;
+        }
+        if (p.second < farm[0].size() - 1 && farm[p.first][p.second + 1])
+        {
+            path.push_back({p.first, p.second + 1});
+            farm[p.first][p.second + 1] = false;
+        }
+    }
+}
 
 int main()
 {
@@ -21,17 +54,19 @@ int main()
             farm[x][y] = true;
         }
 
-        int warm = 0;
+        int worm = 0;
         for (int i = 0; i < m; ++i)
         {
             for (int j = 0; j < n; ++j)
             {
-                if (i == 0 && j == 0) warm += (farm[0][0] ? 1 : 0);
-                else if (i == 0) warm += (farm[i][j] && !farm[i][j-1] ? 1 : 0);
-                else if (j == 0) warm += (farm[i][j] && !farm[i-1][j] ? 1 : 0);
-                else warm += (farm[i][j] && !farm[i][j-1] && !farm[i-1][j] ? 1 : 0);
+                if (farm[i][j])
+                {
+                    find_group(i, j, farm);
+                    ++worm;
+                }
             }
         }
-        cout << warm << '\n';
+
+        cout << worm << '\n';
     }
 }
