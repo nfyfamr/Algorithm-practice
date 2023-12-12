@@ -10,22 +10,16 @@ int main()
     int n, m;
     cin >> n >> m;
 
-    vector<int> nums(n);
-    for (int i = 0; i < n; ++i) cin >> nums[i];
-
-    vector<vector<int>> part_sum(n, vector<int>(n, 0));
-    for (int i = 0; i < n; ++i)
+    vector<int> sums(n + 1, 0);
+    for (int i = 1; i < n + 1; ++i)
     {
-        part_sum[i][i] = nums[i];
-        for (int j = i + 1; j < n; ++j)
-        {
-            part_sum[i][j] = part_sum[i][j - 1] + nums[j];
-        }
+        cin >> sums[i];
+        sums[i] += sums[i - 1];
     }
 
     for (int i = 0, u, v; i < m; ++i)
     {
         cin >> u >> v;
-        cout << part_sum[u - 1][v - 1] << '\n';
+        cout << sums[v] - sums[u - 1] << '\n';
     }
 }
