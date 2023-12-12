@@ -21,7 +21,8 @@ int main()
     }
 
     sort(meetings.begin(), meetings.end(), [](const auto &a, const auto &b) {
-        return a.second < b.second;
+        if (a.second == b.second) return a.first < b.first;
+        else return a.second < b.second;
     });
 
     pair<int, int> last_meeting{0, 0};
