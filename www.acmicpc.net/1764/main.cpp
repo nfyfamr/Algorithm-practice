@@ -29,17 +29,23 @@ int main()
 
     sort(no_hear.begin(), no_hear.end());
     sort(no_seen.begin(), no_seen.end());
+
     auto h_it = no_hear.begin();
     auto s_it = no_seen.begin();
-    while (h_it != no_hear.end() || s_it != no_seen.end())
+    vector<string> rst;
+    rst.reserve(n < m ? n : m);
+    while (h_it != no_hear.end() && s_it != no_seen.end())
     {
         if (*h_it == *s_it)
         {
-            cout << *h_it << '\n';
+            rst.push_back(*h_it);
             ++h_it;
             ++s_it;
         }
         else if (*h_it < *s_it) ++h_it;
         else ++s_it;
     }
+
+    cout << rst.size() << '\n';
+    for (auto &el : rst) cout << el << '\n';
 }
