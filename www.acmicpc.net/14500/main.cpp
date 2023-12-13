@@ -5,7 +5,7 @@ using namespace std;
 
 int test(vector<vector<int>> &grid, int x, int y)
 {
-    vector<int> sums(13, 0);
+    vector<int> sums(19, 0);
     int n = grid.size(), m = grid[0].size();
 
     if (x + 3 < n) sums[0] = grid[x][y] + grid[x+1][y] + grid[x+2][y] + grid[x+3][y];
@@ -15,12 +15,18 @@ int test(vector<vector<int>> &grid, int x, int y)
     if (x + 1 < n && y + 2 < m) sums[4] = grid[x][y] + grid[x+1][y] + grid[x][y+1] + grid[x][y+2];
     if (x + 2 < n && y + 1 < m) sums[5] = grid[x][y] + grid[x][y+1] + grid[x+1][y+1] + grid[x+2][y+1];
     if (x + 1 < n && y + 2 < m) sums[6] = grid[x+1][y] + grid[x+1][y+1] + grid[x+1][y+2] + grid[x][y+2];
-      if (x + 2 < n && y + 1 < m) sums[7] = grid[x][y] + grid[x+1][y] + grid[x+1][y+1] + grid[x+2][y+1];
-    if (x + 1 < n && y + 2 < m) sums[8] = grid[x+1][y] + grid[x+1][y+1] + grid[x][y+1] + grid[x][y+2];
-    if (x + 1 < n && y + 2 < m) sums[9] = grid[x][y] + grid[x][y+1] + grid[x][y+2] + grid[x+1][y+1];
-      if (x + 2 < n && y + 1 < m) sums[10] = grid[x+1][y] + grid[x][y+1] + grid[x+1][y+1] + grid[x+2][y+1];
-    if (x + 1 < n && y + 2 < m) sums[11] = grid[x+1][y] + grid[x+1][y+1] + grid[x+1][y+2] + grid[x][y+1];
-    if (x + 2 < n && y + 1 < m) sums[12] = grid[x][y] + grid[x+1][y] + grid[x+1][y+1] + grid[x+2][y];
+    if (x + 2 < n && y + 1 < m) sums[7] = grid[x][y+1] + grid[x+1][y+1] + grid[x+2][y+1] + grid[x+2][y];
+    if (x + 1 < n && y + 2 < m) sums[8] = grid[x][y] + grid[x+1][y] + grid[x+1][y+1] + grid[x+1][y+2];
+    if (x + 2 < n && y + 1 < m) sums[9] = grid[x][y] + grid[x][y+1] + grid[x+1][y] + grid[x+2][y];
+    if (x + 1 < n && y + 2 < m) sums[10] = grid[x][y] + grid[x][y+1] + grid[x][y+2] + grid[x+1][y+2];
+    if (x + 2 < n && y + 1 < m) sums[11] = grid[x][y] + grid[x+1][y] + grid[x+1][y+1] + grid[x+2][y+1];
+    if (x + 1 < n && y + 2 < m) sums[12] = grid[x+1][y] + grid[x+1][y+1] + grid[x][y+1] + grid[x][y+2];
+    if (x + 2 < n && y + 1 < m) sums[13] = grid[x][y+1] + grid[x+1][y] + grid[x+1][y+1] + grid[x+2][y];
+    if (x + 1 < n && y + 2 < m) sums[14] = grid[x][y] + grid[x][y+1] + grid[x+1][y+1] + grid[x+1][y+2];
+    if (x + 1 < n && y + 2 < m) sums[15] = grid[x][y] + grid[x][y+1] + grid[x][y+2] + grid[x+1][y+1];
+    if (x + 2 < n && y + 1 < m) sums[16] = grid[x+1][y] + grid[x][y+1] + grid[x+1][y+1] + grid[x+2][y+1];
+    if (x + 1 < n && y + 2 < m) sums[17] = grid[x+1][y] + grid[x+1][y+1] + grid[x+1][y+2] + grid[x][y+1];
+    if (x + 2 < n && y + 1 < m) sums[18] = grid[x][y] + grid[x+1][y] + grid[x+1][y+1] + grid[x+2][y];
 
     return *max_element(sums.begin(), sums.end());
 }
