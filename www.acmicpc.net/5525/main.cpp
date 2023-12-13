@@ -6,9 +6,16 @@ class Checker
 public:
     char next_state = 'I';
     bool valid_next(char n) {
-        bool ret = this->next_state == n;
-        this->next_state = (n == 'I' ? 'O' : 'I');
-        return ret;
+        if (this->next_state == n)
+        {
+            this->next_state = (n == 'I' ? 'O' : 'I');
+            return true;
+        }
+        else
+        {
+            this->next_state = (n == 'I' ? 'O' : 'I');
+            return false;
+        }
     }
 };
 
@@ -36,7 +43,7 @@ int main()
         }
         else
         {
-            anchor = i;
+            anchor = (c == 'O' ? i + 1 : i);
         }
     }
 
