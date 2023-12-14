@@ -33,13 +33,18 @@ int main()
     {
         cin >> c >> l >> r;
         nodes[c - 'A'].val = c;
-        nodes[c - 'A'].left = &nodes[l - 'A'];
-        nodes[c - 'A'].right = &nodes[r - 'A'];
 
         if (l != '.')
+        {
+            nodes[c - 'A'].left = &nodes[l - 'A'];
             nodes[l - 'A'].val = l;
+        }
+        
         if (r != '.')
+        {
+            nodes[c - 'A'].right = &nodes[r - 'A'];
             nodes[r - 'A'].val = r;
+        }
     }
 
     dfs(&nodes[0], 0);
