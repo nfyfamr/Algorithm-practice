@@ -8,10 +8,10 @@ int main()
 
     unsigned long long a, b, c;
     cin >> a >> b >> c;
-    unsigned long long rst = a;
+    unsigned long long rst = 1;
     for (int i = 0; i < b; ++i)
     {
-        rst = rst * a % c;
+        rst = (rst * (a % c)) % c;
     }
-    cout << a;
+    cout << rst;
 }
