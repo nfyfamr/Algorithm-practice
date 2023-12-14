@@ -5,7 +5,7 @@ unsigned long long pow(unsigned int a, unsigned int b, unsigned int c)
 {
     if (b == 0) return 1;
 
-    int rst = pow(a, b / 2, c);
+    auto rst = pow(a, b / 2, c);
     if (b % 2 == 0)
         return (rst * rst) % c;
     else
