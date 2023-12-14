@@ -1,17 +1,23 @@
 #include<iostream>
 using namespace std;
 
+unsigned long long pow(unsigned int a, unsigned int b, unsigned int c)
+{
+    if (b == 0) return 1;
+
+    int rst = pow(a, b / 2, c);
+    if (b % 2 == 0)
+        return (rst * rst) % c;
+    else
+        return (((rst * rst) % c) * a) % c;
+}
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    unsigned long long a, b, c;
+    unsigned int a, b, c;
     cin >> a >> b >> c;
-    unsigned long long rst = 1;
-    for (int i = 0; i < b; ++i)
-    {
-        rst = (rst * (a % c)) % c;
-    }
-    cout << rst;
+    cout << pow(a, b, c);
 }
