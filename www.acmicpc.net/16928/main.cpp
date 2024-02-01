@@ -40,8 +40,8 @@ int main()
     }
 
     vector<int> board(101, MAX);
-    board[0] = 0;
-    int idx = 1;
+    board[0] = board[1] = 0;
+    int idx = 2;
     while (idx <= 100)
     {
         int from_back = filtered_min(idx, board, excludes) + 1;
