@@ -13,14 +13,19 @@ visa = {
 }
 
 cost = 0
+country = 'None'
 for i in range(N):
+    prev_country = country
     country = input().strip()
-    cost = cost + visa[country]
-    if country == 'zambia':
-        visa['zimbabwe'] = 0
-    elif country == 'zimbabwe':
-        visa['zambia'] = 20
-    elif country == 'south-africa':
+
+    if i != 0 and prev_country == 'zambia' and country == 'zimbabwe':
+        pass
+    elif i != 0 and prev_country == 'zimbabwe' and country == 'zambia':
+        cost = cost + 20
+    else:
+        cost = cost + visa[country]
+
+    if country == 'south-africa':
         visa['namibia'] = 40
 
 print(cost)
