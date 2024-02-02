@@ -3,6 +3,9 @@ input = open(0).readline
 T = int(input())
 for _ in range(T):
     n = int(input())
+    if n == 0:
+        print(0)
+        continue
     cloth = {}
     for _ in range(n):
         name, type = input().strip().split()
