@@ -5,7 +5,7 @@ fireball = []
 N, M, K = map(int, input().strip().split())
 for i in range(M):
     r, c, m, s, d = map(int, input().strip().split())
-    fireball.append((r, c, m, s, d))
+    fireball.append((r-1, c-1, m, s, d))
 
 dir = [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]
 def update_sorted_fb(fireball):
