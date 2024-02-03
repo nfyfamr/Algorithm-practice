@@ -30,10 +30,10 @@ def merge_split(fireball_list):
         gross_s = gross_s + s
         align = align + (1 if d%2 == 0 else -1)
     new_dir = [i*2+(abs(align) != n) for i in range(4)]
-    if gross_m == 0:
+    if gross_m // 5 == 0:
         return []
     else:
-        return [(r, c, int(gross_m/5), int(gross_s/n), d) for d in new_dir]
+        return [(r, c, gross_m // 5, gross_s // n, d) for d in new_dir]
 
 for i in range(K):
     coords = update_sorted_fb(fireball)
