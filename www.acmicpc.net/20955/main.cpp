@@ -30,16 +30,15 @@ int main()
     int ops = -1;
     for (auto& e : edge)
     {
-        if (parent[e.first] == 0)
+        if (parent[e.first] == 0 && parent[e.second] == 0)
         {
-            parent[e.first] = e.first;
             ops++;  // connecting op.
         }
-        if (parent[e.first] != 0 && parent[e.second] != 0)
+        else if (parent[e.first] != 0 && parent[e.second] != 0)
         {
             ops++;  // cutting op.
         }
-        parent[e.second] = e.first;
+        parent[e.first] = parent[e.second] = 1;
     }
 
     cout << ops;
