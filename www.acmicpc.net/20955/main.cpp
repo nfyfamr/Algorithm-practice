@@ -6,8 +6,10 @@ using namespace std;
 
 int _find(int n, vector<int>& parent)
 {
-	// cout << n << parent[n] << " " << endl;
-    return n == parent[n] ? n : _find(parent[n], parent);
+  	if (n == parent[n])
+        return n;
+    else
+        return parent[n] = _find(parent[n], parent);
 }
 
 void _union(int fu, int fv, vector<int>& parent)
@@ -36,7 +38,6 @@ int main()
         if (fu == fv)
         {
             ops++;
-            parent[u] = parent[v] = fu;
             continue;
         }
 
