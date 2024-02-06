@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(10**4+10)
+
 class Node:
     def __init__(self, val):
         self.val = val
@@ -25,20 +28,22 @@ class Tree:
             else:
                 self.insert(node, at.right)
 
-    def print_tree(self, at=None):
+    def post_order(self, at=None):
         if at is None: at = self.root
         if at is None: # for empty tree
             return
 
-        if at.left is not None: self.print_tree(at.left)
-        if at.right is not None: self.print_tree(at.right)
+        if at.left is not None: self.post_order(at.left)
+        if at.right is not None: self.post_order(at.right)
         print(at.val)
 
 
 tree = Tree()
-for line in open(0):
-    node = Node(int(line))
-    tree.insert(node)
-    print(node)
+while True:
+    try:
+        node = Node(int(sys.stdin.readline()))
+        tree.insert(node)
+    except:
+        break
 
-tree.print_tree()
+tree.post_order()
