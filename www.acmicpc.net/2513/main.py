@@ -13,20 +13,24 @@ left = sorted(left)
 right = sorted(right, reverse=True)
 
 min_dist = 0
-min_dist += 0 if len(left) == 0 else 2*left[0][0]
-min_dist += 0 if len(right) == 0 else 2*right[0][0]
 passenger = 0
 for x, k in left:
+    if passenger == 0:
+        min_dist += 2 * (S - x)
     passenger += k
+
     if passenger > K:
-        min_dist += 2 * (S - x) * (passenger // K)
+        min_dist += 2 * (S - x) * (passenger // K - (1 if passenger%K == 0 else 0))
         passenger = passenger % K
 
 passenger = 0
 for x, k in right:
+    if passenger == 0:
+        min_dist += 2 * (x - S)
     passenger += k
+
     if passenger > K:
-        min_dist += 2 * (x - S) * (passenger // K)
+        min_dist += 2 * (x - S) * (passenger // K - (1 if passenger%K == 0 else 0))
         passenger = passenger % K
 
 print(min_dist)
